@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- saved from url=(0067)file:///Users/martinathege/Downloads/Slutuppgift2_MartinaThege.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slutuppgift 2 - Martina Thege</title>
+    <style>
+        .square1 {
+            height: 90px;
+            width: 220px;
+            background-color: rgb(238, 231, 231);
+            text-align: center;
+            font-size: 70px;
+            font-family: verdana;
+        }
+
+        .square2 {
+            height: 90px;
+            width: 220px;
+            background-color: rgb(182, 207, 165);
+            text-align: center;
+            font-size: 70px;
+            font-family: verdana;
+        }
+
+        .text {
+            font-family: Verdana;
+            font-size: 20px;
+        }
+
+        .intro {
+            font-size: 70px;
+            font-family: verdana;
+        }
+
+        .rules {
+            font-size: 40px;
+            font-family: verdana;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- För att få spelet att se lite festligare ut har jag här ovan använt mig av 
+    lite CSS och kopplat dem till HTML här nedan. -->
+    <div class="intro">STEN SAX PÅSE</div>
+    <div class="rules">Sten = 1 <br> Sax = 2<br> Påse = 3 </div>
+    <h2>Motståndare</h2>
+    <div id="square1" class="square1"></div>
+    <h2>DU</h2>
+    <div id="square2" class="square2"></div>
+    <p id="text" class="text"></p>
+
+
+    <script>
+
+
+        window.addEventListener('keydown', function () { //här sätter jag in en eventListener för funktionen keydown.
+            let x = event.keyCode;
+            let motSida = document.getElementById("square1");//här hämtar jag rutorna från HTML till scriptet.
+            let minSida = document.getElementById("square2");
+            let text = document.getElementById("text");
+            let mot = Math.floor(Math.random() * 3) + 1; //gör en variabel som slumpar fram siffran 1, 2 och 3. 
+
+            //nedan har jag gjort ett antal if-satser som jämför datorns slumpade tal med den siffra mellan 1-3 och som jag har valt.
+            //och som sedan skriver ut vad respektive spelare valde samt reslutatet (vem som vann).
+            if (x == 49 && mot == 1) {
+                text.innerHTML = "Oavgjort då ni båda valde samma";
+                motSida.innerHTML = "STEN";
+                minSida.innerHTML = "STEN";
+            }
+            if (x == 50 && mot == 2) {
+                text.innerHTML = "Oavgjort då ni båda valde samma";
+                motSida.innerHTML = "SAX";
+                minSida.innerHTML = "SAX";
+            }
+            if (x == 51 && mot == 3) {
+
+                text.innerHTML = "Oavgjort då ni båda valde samma";
+                motSida.innerHTML = "PÅSE";
+                minSida.innerHTML = "PÅSE";
+            }
+            if (x == 49 && mot == 2) {
+                motSida.innerHTML = "SAX";
+                minSida.innerHTML = "STEN";
+                text.innerHTML = "Du valde sten och motståndaren sten - du vann!";
+            }
+            if (x == 49 && mot == 3) {
+                motSida.innerHTML = "PÅSE";
+                minSida.innerHTML = "STEN";
+                text.innerHTML = "Du valde sten och motståndaren påse - du förlorade!";
+            }
+            if (x == 50 && mot == 1) {
+                motSida.innerHTML = "STEN";
+                minSida.innerHTML = "SAX";
+                text.innerHTML = "Du valde sax och motståndaren sten - du förlorade!";
+            }
+            if (x == 50 && mot == 3) {
+                motSida.innerHTML = "PÅSE";
+                minSida.innerHTML = "SAX";
+                text.innerHTML = "Du valde sax och motståndaren påse - du vann!";
+            }
+            if (x == 51 && mot == 1) {
+                motSida.innerHTML = "STEN";
+                minSida.innerHTML = "PÅSE";
+                text.innerHTML = "Du valde påse och motståndaren sten - du vann!";
+            }
+            if (x == 51 && mot == 2) {
+                motSida.innerHTML = "SAX";
+                minSida.innerHTML = "PÅSE";
+                text.innerHTML = "Du valde påse och motståndaren sax - du förlorade!";
+
+            }
+        });
+
+
+    </script>
+
+
+
+
+</body></html>
